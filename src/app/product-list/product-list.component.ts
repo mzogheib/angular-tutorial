@@ -10,6 +10,10 @@ import { products } from '../products';
 export class ProductListComponent {
   products = [...products];
 
+  makeAnchorTitle(product: any) {
+    return product.name + ' details';
+  }
+
   share() {
     window.alert('The product has been shared!');
   }
