@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { Product } from './products';
 
-interface ShippingOption {
+export interface ShippingOption {
   type: string;
   price: number;
 }
