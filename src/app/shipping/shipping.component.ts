@@ -9,11 +9,11 @@ import { CartService, ShippingOption } from '../cart.service';
   styleUrls: ['./shipping.component.scss'],
 })
 export class ShippingComponent implements OnInit {
-  items!: Observable<ShippingOption[]>;
+  shippingOptions!: Observable<ShippingOption[]>;
 
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
-    this.items = this.cartService.getShippingPrices();
+    this.shippingOptions = this.cartService.getShippingOptions();
   }
 }

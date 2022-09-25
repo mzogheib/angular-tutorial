@@ -1,6 +1,6 @@
 <h3>Shipping</h3>
 
-<div class="shipping-item" *ngFor="let item of items | async">
-  <span>{{ item.type }}</span>
-  <span>{{ item.price | currency }}</span>
+<div class="shipping-option" *ngFor="let shippingOption of shippingOptions | async">
+  <span>{{ shippingOption.type }}</span>
+  <span>{{ shippingOption.price | currency }}</span>
 </div>

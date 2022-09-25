@@ -31,7 +31,7 @@ export class CartService {
     return this.items;
   }
 
-  getShippingPrices() {
+  getShippingOptions() {
     return this.http.get<ShippingOption[]>(SHIPPING_OPTIONS_URL);
   }
 }
