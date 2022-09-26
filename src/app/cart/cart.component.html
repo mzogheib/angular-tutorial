@@ -4,12 +4,16 @@
   <a routerLink="/shipping">Shipping</a>
 </p>
 
+<p *ngIf="!items.length">
+  Your cart is empty! Browse our products <a routerLink="/">here</a>.
+</p>
+
 <div class="cart-item" *ngFor="let item of items">
   <span>{{ item.name }}</span>
   <span>{{ item.price | currency }}</span>
 </div>
 
-<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+<form *ngIf="items.length" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
 
   <div>
     <label for="name">
