@@ -22,9 +22,15 @@ export class CartComponent {
   ) {}
 
   onSubmit(): void {
+    const { name, address } = this.checkoutForm.value;
+
+    if (!this.items.length || !name || !address) return;
+
     // Process checkout data here
     this.items = this.cartService.clearCart();
-    console.warn('Your order has been submitted', this.checkoutForm.value);
+    window.alert(
+      `Thanks ${name}! Your order is being processed and will be delivered to ${address}.`
+    );
     this.checkoutForm.reset();
   }
 }
