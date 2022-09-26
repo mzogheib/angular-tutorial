@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 
+import { CartForm } from '../cart-form/cart-form.component';
 import { CartService } from '../cart.service';
 
 @Component({
@@ -11,26 +11,17 @@ import { CartService } from '../cart.service';
 export class CartComponent {
   items = this.cartService.getItems();
 
-  checkoutForm = this.formBuilder.group({
-    name: '',
-    address: '',
-  });
+  constructor(private cartService: CartService) {}
 
-  constructor(
-    private cartService: CartService,
-    private formBuilder: FormBuilder
-  ) {}
+  onSubmit(values: CartForm): void {
+    const { name, address } = values;
 
-  onSubmit(): void {
-    const { name, address } = this.checkoutForm.value;
+    if (!name || !address) return;
 
-    if (!this.items.length || !name || !address) return;
-
-    // Process checkout data here
-    this.items = this.cartService.clearCart();
     window.alert(
       `Thanks ${name}! Your order is being processed and will be delivered to ${address}.`
     );
-    this.checkoutForm.reset();
+
+    this.items = this.cartService.clearCart();
   }
 }
